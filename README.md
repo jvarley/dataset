@@ -1,4 +1,4 @@
-# dset
+# dataset
 Code related to creating and using datasets for machine learning.  My datasets tend to be on the order of 10s to 100s of GB, to big to fit in memory, but still able to fit on a single HD. 
 
 I store my data as flat files in /srv/data
