@@ -15,10 +15,12 @@ class DatasetWriter(object):
 
         self.dataset_fullpath = self.dataset_dir + self.dataset_name
 
-        if not os.path.exists(self.dataset_fullpath):
-            os.mkdir(self.dataset_fullpath)
-            
-            self.add_info_item("creation_date", time.strftime("y%y_m%m_d%d_h%H_m%M_s%S"))
+
+        if os.path.exists(self.dataset_fullpath):
+            raise Exception("Dataset Already Exists")
+
+        os.mkdir(self.dataset_fullpath)
+        self.add_info_item("creation_date", time.strftime("y%y_m%m_d%d_h%H_m%M_s%S"))
 
     """
     This should be the filenames for a training example
@@ -38,9 +40,9 @@ class DatasetWriter(object):
     ex patch_size: 40
     """
     def add_info_item(self, key, value):
-        yaml_fullpath = self.dataset_fullpath + "info.yaml"
+        yaml_fullpath = self.dataset_fullpath + "/" + "info.yaml"
         if os.path.exists(yaml_fullpath):
-            data = yaml.load(open(yaml_file, "r"))
+            data = yaml.load(open(yaml_fullpath, "r"))
         else:
             data = {}
 

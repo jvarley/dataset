@@ -14,8 +14,8 @@ class Dataset(object):
 		self.items_cache = {}
 
 	def get_info(self):
-		yaml_fullpath = self.dataset_fullpath + "info.yaml"
-		data = yaml.load(open(yaml_file, "r"))
+		yaml_fullpath = self.dataset_fullpath + "/" + "info.yaml"
+		data = yaml.load(open(yaml_fullpath, "r"))
 		return data
 
 
