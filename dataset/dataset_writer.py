@@ -1,5 +1,6 @@
 import os
 import yaml
+import time
 
 
 class DatasetWriter(object):
@@ -16,6 +17,8 @@ class DatasetWriter(object):
 
         if not os.path.exists(self.dataset_fullpath):
             os.mkdir(self.dataset_fullpath)
+            
+            self.add_info_item("creation_date", time.strftime("y%y_m%m_d%d_h%H_m%M_s%S"))
 
     """
     This should be the filenames for a training example
